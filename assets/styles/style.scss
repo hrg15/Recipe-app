@@ -1,0 +1,259 @@
+// import files
+@import "variables";
+
+
+
+/* ++main styles++ */
+*{
+    font-family: $f-familt;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    @include flex;
+    height: 100vh;
+    width: 100%;
+    background: rgb(211,84,0);
+    background: linear-gradient(148deg, rgba(211,84,0,1) 20%, rgba(154,63,16,1) 100%);
+}
+button{
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* app styles */
+.container{
+    @include shadow(1px , 2px , 4px , 0.2);
+    @include shadow(1px , 2px , 8px , 0.3);
+    @include shadow(0px , 1px , 15px , 0.2);
+    @include shadow(0px , 1px , 40px , 0.2);
+    background: white;
+    border-radius: 3px;
+    width: 500px;
+    height: 85%;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    header{ 
+        @include flex;
+        padding: 10px;
+        justify-content: space-between;
+        height: 60px;
+            .logo{
+                display: flex;
+                h3{
+                    font-size: 1.7rem;
+                    span{
+                        color: #e67e22;
+                    }
+                }
+            }
+            .search{    
+                margin-right: 15px;
+                border: 1px solid #e67e22;
+                border-radius: 40px;
+                
+                input{
+                    font-family: $f-familt;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    //border-bottom: 1px solid #272727;
+                    transition: all 0.3s ease;
+                    padding: 0 ;
+                    font-size: 1.2rem;
+                    
+                }
+                button{
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1.3rem;
+                    padding: 8px 8px 5px 5px;
+                    color: #e67e22;
+                }
+            }
+        }
+        main{
+            .favorite{
+                @include flex;
+                flex-direction: column;
+                justify-content: space-around;
+                height: 200px; 
+                width: 100%;
+                background: #FFE0B2;
+
+                ::-webkit-scrollbar {
+                    width: 40px;
+                    height: 13px;
+                  }
+                  ::-webkit-scrollbar-track {
+                    background: #f1f1f1; 
+                  }
+                  ::-webkit-scrollbar-thumb {
+                    background: #888;
+                    width: 5px; 
+                  }
+                  ::-webkit-scrollbar-thumb:hover {
+                    background: #555; 
+                  }
+                ul{
+                    @include flex;
+                    justify-content: space-around;
+                    list-style: none;
+                    width: 100%;
+                    overflow: auto;
+                    li{
+                        position: relative;
+                        text-align: center;
+                        margin: 0 5px 10px;
+                        h3{
+                            width:100px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                        .fav-pic{
+                            width: 100px; 
+                            height: 100px;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            img{
+                                object-fit: cover;
+                                width: 100%;
+                                height: 100%;
+                                &:hover{
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                        button{
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            cursor: pointer;
+                            display: none;
+                            &:hover{
+                                color: red;
+                            }
+                        }
+                        &:hover > button {
+                            display: block;
+                        }
+                    }
+                }
+            }
+            .random{
+                margin-top: 30px;
+                height: 55%;
+                overflow: auto;
+  
+                .random-cart{
+                    @include shadow(0 , 0px , 4px,0.2);
+                    @include shadow(0 , 1px , 15px,0.2);
+                    width: 80%;
+                    height: 320px;
+                    margin: 0px auto 20px;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    background: #fff;
+                    .meta{
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 15px;
+                        align-items: center;
+                        height: 90px;
+                        button{
+                            font-size: 1.3rem;
+                            color: #BDBDBD;
+                            
+                        }
+                        .active{
+                            color: #f44336;
+                        }
+                        h1{
+                            font-size: 1.2rem;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .random-pic{
+                        width: 100%;
+                        height: 230px;
+
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: all 0.3s;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                        &:hover > img{
+                            filter: grayscale(20%);
+                        }
+                    }
+                }
+            }
+        }
+        .modal{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            ::-webkit-scrollbar {
+                width: 14px;
+                height: 13px;
+              }
+              ::-webkit-scrollbar-track {
+                background: #f1f1f1; 
+              }
+              ::-webkit-scrollbar-thumb {
+                background: #888;
+                width: 5px; 
+              }
+              ::-webkit-scrollbar-thumb:hover {
+                background: #555; 
+              }
+
+            .meal-info{
+                width: 90%;
+                height: 90%;
+                background: white;
+                padding: 10px;
+                border-radius: 5px;
+                overflow: auto;
+                .info-pic{
+                    width: 100%;
+                    img{
+                        width: 100%;
+
+                    }
+                }
+                h2{
+                    text-align: center;
+                    font-size: 2.5rem;
+                }
+                p{
+                    padding: 5px;
+                    font-weight: 600;
+                }
+                button{
+                    font-size: 1.2em;
+                }
+            }
+        }
+}

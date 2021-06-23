@@ -1,0 +1,14 @@
+// variables
+$f-familt:'Mada', sans-serif;
+
+
+
+// mixin
+@mixin shadow($x , $y , $b ,$o) {
+    box-shadow: $x $y $b rgba(0 , 0 , 0 , $o);
+}
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
